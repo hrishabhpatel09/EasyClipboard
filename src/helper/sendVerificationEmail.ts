@@ -11,7 +11,7 @@ export const sendEmail = async(
     try {
         const response = await resend.emails.send(
             {
-                from: '<onboarding@resend.dev>',
+                from: 'Acme <onboarding@resend.dev>',
                 to: email,
                 subject: 'Mystery Message Verification Code',
                 react: VerificationEmail({username, otp: verifyCode}),
