@@ -1,32 +1,48 @@
 import { NextRequest, NextResponse } from "next/server";
 import UserModel from "@/model/User.model";
+import connectDB from "@/lib/dbConnect";
+import { VerifySchema } from "@/schemas/verifySchema";
+import apiResponse from "@/helper/apiResponse";
 
 export async function POST(request:NextRequest) {
-    const {otp} = await request.json();
-    if(!otp){
-        return NextResponse.json({
-            message: 'Please enter your verification code',
-            success: false
-        })
-    }
-    const user = await UserModel.findOne({verifyCode: otp});
-    if(!user){
-        return NextResponse.json({
-            message: 'Invalid Otp'
-        })
-    }
-    const currentTime = new Date();
-    const isOtpValid = user.verifyCodeExpiry>=currentTime;
-    if(!isOtpValid){
-        return NextResponse.json({
-            message: 'Otp is expired. retry Signup'
-        })
-    }
-    else{
-        user.isVerified = true;
-        await user.save()
-        return NextResponse.json({
-            message: 'Otp verification Successfull'
-        },{status: 200})
+    await connectDB();
+    try {
+        const {username, code} = await request.json()
+        const decodedUsername  = decodeURIComponent(username);
+
+        const user = await UserModel.findOne({username: decodedUsername});
+        if(!user){
+            return NextResponse.json(new apiResponse(
+                'User Not found',
+                false,
+                400
+            ))
+        }
+
+        const isCodeValid = user.verifyCode === code;
+        const isCodeNotExpired = new Date(user.verifyCodeExpiry) >= new Date();
+
+        if(isCodeNotExpired&&isCodeValid){
+            user.isVerified =  true;
+            return NextResponse.json(new apiResponse(
+                'User Verification successfull',
+                true,
+                200
+            ))
+        }
+        else{
+            return NextResponse.json(new apiResponse(
+                'Otp Expired or Incorrect',
+                false,
+                204
+            ))
+        }
+
+    } catch (error:any) {
+        return NextResponse.json(new apiResponse(
+            'Error Verifying User'+error,
+            false,
+            500
+        ))
     }
 }
