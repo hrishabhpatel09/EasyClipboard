@@ -9,6 +9,7 @@ export async function POST(request: NextRequest) {
 
     try {
         const {email, password, username} = await request.json();
+        console.log(email)
         const existingUser = await UserModel.findOne({email:email});
         if(existingUser){
             if(existingUser.isVerified){
@@ -27,7 +28,7 @@ export async function POST(request: NextRequest) {
                 existingUser.password = hashedPassword;
                 existingUser.verifyCodeExpiry = expiryDate;
                 existingUser.verifyCode = verifyCode;
-                existingUser.message = [];
+                existingUser.messages = [];
 
                 await existingUser.save();
                 //sending verification Email

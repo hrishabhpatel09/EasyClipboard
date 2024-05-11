@@ -8,6 +8,7 @@ export async function POST(request:NextRequest) {
     await connectDB();
     try {
         const {username, code} = await request.json()
+        console.log(username,code)
         const decodedUsername  = decodeURIComponent(username);
 
         const user = await UserModel.findOne({username: decodedUsername});
@@ -24,6 +25,7 @@ export async function POST(request:NextRequest) {
 
         if(isCodeNotExpired&&isCodeValid){
             user.isVerified =  true;
+            await user.save()
             return NextResponse.json(new apiResponse(
                 'User Verification successfull',
                 true,

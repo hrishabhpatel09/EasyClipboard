@@ -25,7 +25,7 @@ export interface User extends Document{
     verifyCodeExpiry: Date,
     isVerified: boolean,
     isAcceptingMessage: boolean,
-    message: Message[]
+    messages: Message[]
 }
 
 const userSchema:Schema<User> = new Schema({
@@ -60,7 +60,7 @@ const userSchema:Schema<User> = new Schema({
         type:Boolean,
        default: true
     },
-    message: [messageSchema]
+    messages: [messageSchema]
 },{timestamps: true})
 
 const UserModel = mongoose.models.User as mongoose.Model<User> || mongoose.model('User',userSchema)
