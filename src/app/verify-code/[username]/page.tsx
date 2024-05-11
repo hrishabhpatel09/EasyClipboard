@@ -6,16 +6,20 @@ import {
     InputOTPSlot,
   } from "@/components/ui/input-otp"
   
-import { useParams } from "next/navigation" 
+import { redirect, useParams } from "next/navigation" 
 import { MouseEventHandler, useEffect, useState } from "react"
 import axios from 'axios'
 import { useToast } from "@/components/ui/use-toast"
+import {useRouter} from 'next/navigation'
 
 function page() {
   const {toast} = useToast()
   const {username} = useParams()
   const [code, setCode]= useState('')
   const [isButtonActive, setIsButtonActive] = useState(false)
+  const router = useRouter();
+
+
   const onSubmit = async()=>{
     try {
       const data = {
@@ -27,6 +31,7 @@ function page() {
         toast({
           title: response.data.message,
         })
+        router.replace('/sign-in')
       }
     } catch (error:any) {
       toast({

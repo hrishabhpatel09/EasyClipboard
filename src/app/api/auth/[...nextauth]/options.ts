@@ -18,7 +18,7 @@ export const authOptions: NextAuthOptions = {
                 await connectDB();
                 try {
                     const user = await UserModel.findOne({
-                        email: credentials.identifier.email
+                        username: credentials.identifier
                     })
                     if(!user){
                         throw new Error('No user Found with this email')
