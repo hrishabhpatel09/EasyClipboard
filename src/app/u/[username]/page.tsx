@@ -59,7 +59,7 @@ function Page() {
             <h2 className='text-center text-pretty text-4xl font-extrabold font-sans'>Public link for anonymous Message</h2>
             <div className='pr-50 pl-20 mt-6'>
                 <p className='text-left mb-2'>Sending Anonymous Message to @{username}</p>
-                <textarea cols="30" rows="6" className='rounded-md' placeholder='Type Your Message here.' value={content} onChange={(e)=>setContent(e.target.value)}></textarea>
+                <textarea cols={30} rows={6} className='rounded-md' placeholder='Type Your Message here.' value={content} onChange={(e)=>setContent(e.target.value)}></textarea>
             </div>
             <p className='text-center'>{loading?'Please wait! sending message ...':''}</p>
             <button className='text-white bg-black rounded-md pt-2 pb-2 p-4 w-24 self-center justify-center mt-3' onClick={checkCurrentStatus}>Send</button>
