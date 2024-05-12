@@ -32,7 +32,7 @@ export default function Home() {
         <Carousel className="w-full max-w-xs" plugins={[plugin.current]}>
         <CarouselContent>
           {messages.map((message) => (
-            <CarouselItem className="basic-1/2">
+            <CarouselItem className="basic-1/2" key={1}>
               <Card>
                 <CardHeader className="text-center mt-2">
                   {message.title}

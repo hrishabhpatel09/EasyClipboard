@@ -59,7 +59,7 @@ function Page() {
               <p>{processing?"Wait for a minute, Processing ...": ""}</p>
               <button className='bg-black text-white p-2 rounded-md' onClick={onSubmit} disabled={isButtonDisable}>Login</button>
               <div>
-                  <p>Doesn't Have an Account?</p>
+                  <p>Doesn&#39;t Have an Account?</p>
                   <p className="font-bold text-blue-500 text-center"><Link href={'/sign-up'}>Register</Link></p>
               </div>
         </div>
