@@ -3,10 +3,11 @@ import React from 'react'
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
 import {User} from 'next-auth'
+import { useRouter } from 'next/navigation'
 
 function Navbar() {
   const {data: session} = useSession();
-
+  const router = useRouter();
 
   const user: User = session?.user as User
   return (
@@ -21,7 +22,7 @@ function Navbar() {
                     </>
                 ):(
                     <Link href={'/sign-in'}>
-                        <button className='full md:w-auto'>Login</button>
+                        <button className='full md:w-auto text-white bg-black rounded-md pt-2 pb-2 p-4'>Login</button>
                     </Link>
                 )
             }

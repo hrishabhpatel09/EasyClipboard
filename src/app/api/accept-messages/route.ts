@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/options";
 import apiResponse from "@/helper/apiResponse";
 
-export async function Post(request: NextRequest) {
+export async function POST(request: NextRequest) {
     await connectDB();
     const session = await getServerSession(authOptions);
     const user: User = session?.user as User;
@@ -19,6 +19,7 @@ export async function Post(request: NextRequest) {
     }
     const id = user._id;
     const {acceptMessages } = await request.json();
+    console.log(acceptMessages)
     try {
         const updatedUser = await UserModel.findByIdAndUpdate(id,{
             isAcceptingMessage: acceptMessages
@@ -31,11 +32,7 @@ export async function Post(request: NextRequest) {
             ))
         }
         else{
-            return NextResponse.json(new apiResponse(
-                'Message acceptance status changed successfully',
-                true,
-                200
-            ))
+            return NextResponse.json(updatedUser)
         }
     } catch (error) {
         return NextResponse.json(new apiResponse(
@@ -67,11 +64,10 @@ export async function GET(request:NextRequest) {
                 400
             ))
         }else{
-            return NextResponse.json(new apiResponse(
-                'isUserAcceptingMessages:'+foundUser.isAcceptingMessage,
-                true,
-                200
-            ))
+            return NextResponse.json({
+                isAcceptingMessages: foundUser.isAcceptingMessage,
+                success: true
+            },{status: 200})
         }
     } catch (error) {
         return NextResponse.json(new apiResponse(

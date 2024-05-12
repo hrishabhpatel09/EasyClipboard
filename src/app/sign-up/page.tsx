@@ -93,7 +93,11 @@ useEffect(()=>{
                     <input {...register('password')} className="border-black border-b-2 h-9 w-[260px] p-1 mb-12" onChange={(e)=>setPassword(e.target.value)} placeholder="password" value={password}></input>
                     <hr />
                     <p>{isSubmitting?'Processing':''}</p>
-                    <button className="mt-4 bg-black text-white pt-2 pb-2 pr-4 pl-4 text-center rounded-lg" onClick={handleSubmit(onSubmit)}>Signup</button>
+                    <button className="mt-4 bg-black text-white pt-2 pb-2 pr-4 pl-4 text-center rounded-lg mb-3" onClick={handleSubmit(onSubmit)}>Signup</button>
+                    <div>
+                      <p>Already Have a Account?</p>
+                      <p className="font-bold text-blue-500"><Link href={'/sign-in'}>Login</Link></p>
+                    </div>
                   </div>
           </form>
       </div>
