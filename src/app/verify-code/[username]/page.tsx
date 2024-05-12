@@ -12,7 +12,7 @@ import axios from 'axios'
 import { useToast } from "@/components/ui/use-toast"
 import {useRouter} from 'next/navigation'
 
-function page() {
+function Page() {
   const {toast} = useToast()
   const {username} = useParams()
   const [code, setCode]= useState('')
@@ -72,4 +72,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

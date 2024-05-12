@@ -16,7 +16,7 @@ import { Switch } from '@/components/ui/switch'
 import { Loader2, RefreshCcw } from 'lucide-react'
 import { Message } from '@/model/User.model'
 
-function page() {
+function Page() {
   const {data: session} = useSession();
   const user: User = session?.user as User
   const [messages, setMessages ] = useState<Message[]>([])
@@ -192,4 +192,4 @@ function page() {
   );
 }
 
-export default page
+export default Page

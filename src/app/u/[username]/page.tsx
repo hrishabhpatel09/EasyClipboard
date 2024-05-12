@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useToast } from '@/components/ui/use-toast'
 import { set } from 'mongoose'
 
-function page() {
+function Page() {
     const {username} = useParams()
     const {toast} = useToast()
     const [content, setContent] = useState('')
@@ -68,4 +68,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

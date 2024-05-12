@@ -7,7 +7,7 @@ import { signIn } from 'next-auth/react'
 import {z} from 'zod'
 import Link from 'next/link'
 
-function page() {
+function Page() {
   const {toast} = useToast()
   const router = useRouter()
   const [username, setUsername] = useState('');
@@ -69,4 +69,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
