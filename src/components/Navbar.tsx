@@ -18,7 +18,7 @@ function Navbar() {
                 session? (
                     <>
                     <span className='mr-4'>Welcome, {user?.username}</span>
-                    <button onClick={()=>signOut()} className='w-full md:w-auto'>Logout</button>
+                    <button onClick={()=>signOut()} className='w-full md:w-auto text-white bg-black rounded-md pt-2 pb-2 p-4'>Logout</button>
                     </>
                 ):(
                     <Link href={'/sign-in'}>
