@@ -90,7 +90,7 @@ useEffect(()=>{
                     <input {...register('username')} className="border-black border-b-2 h-9 w-[260px] p-1 mb-4" onChange={(e)=>setUsername(e.target.value)} placeholder="Username" value={username}></input>
                     <p className="text-center pt-[0.5px]">{isCheckingUsername?'Loading...':usernameMessage}</p>
                     <input {...register('email')} className="border-black border-b-2 h-9 w-[260px] p-1 mb-4" onChange={(e)=>setEmail(e.target.value)} placeholder="email" value={email}></input>
-                    <input {...register('password')} className="border-black border-b-2 h-9 w-[260px] p-1 mb-12" onChange={(e)=>setPassword(e.target.value)} placeholder="password" value={password}></input>
+                    <input {...register('password')} className="border-black border-b-2 h-9 w-[260px] p-1 mb-12" onChange={(e)=>setPassword(e.target.value)} placeholder="password" value={password} type="password"></input>
                     <hr />
                     <p>{isSubmitting?'Processing':''}</p>
                     <button className="mt-4 bg-black text-white pt-2 pb-2 pr-4 pl-4 text-center rounded-lg mb-3" onClick={handleSubmit(onSubmit)}>Signup</button>

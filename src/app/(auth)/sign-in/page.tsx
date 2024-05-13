@@ -55,7 +55,7 @@ function Page() {
         <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md items-center flex flex-col">
           <h4 className="text-2xl font-extrabold tracking-tight lg:text-4xl mb-6 text-center">Dive into the world of Mystery Message</h4>
               <input type="text" placeholder='username' name='username' onChange={(e)=>setUsername(e.target.value)} className="border-black border-b-2 h-9 w-[260px] p-1 mb-4"/>
-              <input type="text" placeholder='password' name='password' onChange={(e)=>setPassword(e.target.value)} className="border-black border-b-2 h-9 w-[260px] p-1 mb-4"/>
+              <input type="password" placeholder='password' name='password' onChange={(e)=>setPassword(e.target.value)} className="border-black border-b-2 h-9 w-[260px] p-1 mb-4"/>
               <p>{processing?"Wait for a minute, Processing ...": ""}</p>
               <button className='bg-black text-white p-2 rounded-md' onClick={onSubmit} disabled={isButtonDisable}>Login</button>
               <div>
