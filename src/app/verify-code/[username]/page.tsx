@@ -43,6 +43,11 @@ function Page() {
 
   useEffect(()=>{
     if(code.length==6){
+      window.addEventListener('keydown',(e)=>{
+        if(e.key==='Enter'){
+          onSubmit();
+        }
+      })
       setIsButtonActive(true)
     }
     else{
